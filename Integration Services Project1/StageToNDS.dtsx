@@ -9,10 +9,11 @@
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.170"
   DTS:LocaleID="1033"
+  DTS:MaxErrorCount="1000000"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{D32872E2-F119-4059-8ECC-60A94CB03281}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{538ACB22-5729-450D-AAD2-9E89BAC0251F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -28,6 +29,16 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Accidents1114.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{0FD882FD-351C-4F99-86DF-7D7483B80E19}"
+      DTS:ObjectName="Accidents1114.csv">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="D:\Users\PC\source\repos\Integration Services Project1\UK Accidents Data 2011-2014\Accidents1114.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[QUANG\MSSQLSERVER07.DATH_Stage]"
       DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
       DTS:DTSID="{7DD3E0DA-A1FC-4FCD-B11B-8817A891A8A2}"
@@ -35,6 +46,16 @@
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectionString="Data Source=QUANG\MSSQLSERVER07;Initial Catalog=DATH_Stage;Integrated Security=True;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Vehicles1114.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{DAF2BAB2-E1AE-4CA7-84D0-2A0C7FD5900B}"
+      DTS:ObjectName="Vehicles1114.csv">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="D:\Users\PC\source\repos\Integration Services Project1\UK Accidents Data 2011-2014\Vehicles1114.csv" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -47,13 +68,15 @@
       DTS:DTSID="{A93F4FB6-3F28-42F6-A7D6-DA53C84E6E4F}"
       DTS:ExecutableType="Microsoft.DataProfilingTask"
       DTS:LocaleID="-1"
+      DTS:MaxErrorCount="10000000"
       DTS:ObjectName="Data Profiling Task"
       DTS:TaskContact="Data Profiling Task; Microsoft Corporation; SQL Server 2019; (c) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <DataProfilingTaskData
-          Destination="AccidentProfile">
+          Destination="Vehicles1114.csv"
+          OverwriteDestination="True">
           <ProfileInput><![CDATA[<?xml version="1.0" encoding="utf-16"?>
 <DataProfile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/sqlserver/2008/DataDebugger/">
   <ProfileVersion>1.0</ProfileVersion>
