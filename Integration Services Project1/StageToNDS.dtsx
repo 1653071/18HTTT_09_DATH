@@ -12,8 +12,8 @@
   DTS:MaxErrorCount="1000000"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{538ACB22-5729-450D-AAD2-9E89BAC0251F}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{9EABD9A8-7246-4FB5-ABCF-D46A6FD0A411}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -39,6 +39,26 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Accidents1114.csv 1]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{FA1F5A9B-73DB-45B4-AB40-876D3926625C}"
+      DTS:ObjectName="Accidents1114.csv 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="D:\Users\PC\source\repos\Integration Services Project1\UK Accidents Data 2011-2014\Accidents1114.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Casualties1114.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{A819E8E7-F745-4D39-848D-B5586F87871B}"
+      DTS:ObjectName="Casualties1114.csv">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="D:\Users\PC\source\repos\Integration Services Project1\UK Accidents Data 2011-2014\Casualties1114.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[QUANG\MSSQLSERVER07.DATH_Stage]"
       DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
       DTS:DTSID="{7DD3E0DA-A1FC-4FCD-B11B-8817A891A8A2}"
@@ -58,24 +78,33 @@
           DTS:ConnectionString="D:\Users\PC\source\repos\Integration Services Project1\UK Accidents Data 2011-2014\Vehicles1114.csv" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Vehicles1114.csv 1]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{5F5950E4-00BC-4D37-9D1C-F04C76A353A9}"
+      DTS:ObjectName="Vehicles1114.csv 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="D:\Users\PC\source\repos\Integration Services Project1\UK Accidents Data 2011-2014\Vehicles1114.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Data Profiling Task"
+      DTS:refId="Package\Data Profiling Task 1"
       DTS:CreationName="Microsoft.DataProfilingTask"
       DTS:Description="Data Profiling Task"
-      DTS:DTSID="{A93F4FB6-3F28-42F6-A7D6-DA53C84E6E4F}"
+      DTS:DTSID="{503957E7-19EF-4BD3-884A-9E4E0C8B9684}"
       DTS:ExecutableType="Microsoft.DataProfilingTask"
       DTS:LocaleID="-1"
-      DTS:MaxErrorCount="10000000"
-      DTS:ObjectName="Data Profiling Task"
+      DTS:ObjectName="Data Profiling Task 1"
       DTS:TaskContact="Data Profiling Task; Microsoft Corporation; SQL Server 2019; (c) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <DataProfilingTaskData
-          Destination="Vehicles1114.csv"
+          Destination="Accidents1114.csv"
           OverwriteDestination="True">
           <ProfileInput><![CDATA[<?xml version="1.0" encoding="utf-16"?>
 <DataProfile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/sqlserver/2008/DataDebugger/">
@@ -84,55 +113,7 @@
   <DataProfileInput>
     <ProfileMode>Exact</ProfileMode>
     <Timeout>0</Timeout>
-    <Requests>
-      <ColumnNullRatioProfileRequest ID="NullRatioReq">
-        <DataSourceID>{7DD3E0DA-A1FC-4FCD-B11B-8817A891A8A2}</DataSourceID>
-        <Table Schema="dbo" Table="Accident" />
-        <Column IsWildCard="true" />
-      </ColumnNullRatioProfileRequest>
-      <ColumnStatisticsProfileRequest ID="StatisticsReq">
-        <DataSourceID>{7DD3E0DA-A1FC-4FCD-B11B-8817A891A8A2}</DataSourceID>
-        <Table Schema="dbo" Table="Accident" />
-        <Column IsWildCard="true" />
-      </ColumnStatisticsProfileRequest>
-      <ColumnLengthDistributionProfileRequest ID="LengthDistReq">
-        <DataSourceID>{7DD3E0DA-A1FC-4FCD-B11B-8817A891A8A2}</DataSourceID>
-        <Table Schema="dbo" Table="Accident" />
-        <Column IsWildCard="true" />
-        <IgnoreLeadingSpace>false</IgnoreLeadingSpace>
-        <IgnoreTrailingSpace>true</IgnoreTrailingSpace>
-      </ColumnLengthDistributionProfileRequest>
-      <ColumnValueDistributionProfileRequest ID="ValueDistReq">
-        <DataSourceID>{7DD3E0DA-A1FC-4FCD-B11B-8817A891A8A2}</DataSourceID>
-        <Table Schema="dbo" Table="Accident" />
-        <Column IsWildCard="true" />
-        <Option>FrequentValues</Option>
-        <FrequentValueThreshold>0.001</FrequentValueThreshold>
-      </ColumnValueDistributionProfileRequest>
-      <CandidateKeyProfileRequest ID="KeyReq">
-        <DataSourceID>{7DD3E0DA-A1FC-4FCD-B11B-8817A891A8A2}</DataSourceID>
-        <Table Schema="dbo" Table="Accident" />
-        <KeyColumns>
-          <Column IsWildCard="true" />
-        </KeyColumns>
-        <ThresholdSetting>Specified</ThresholdSetting>
-        <KeyStrengthThreshold>0.95</KeyStrengthThreshold>
-        <VerifyOutputInFastMode>false</VerifyOutputInFastMode>
-        <MaxNumberOfViolations>100</MaxNumberOfViolations>
-      </CandidateKeyProfileRequest>
-      <FunctionalDependencyProfileRequest ID="FDReq">
-        <DataSourceID>{7DD3E0DA-A1FC-4FCD-B11B-8817A891A8A2}</DataSourceID>
-        <Table Schema="dbo" Table="Accident" />
-        <DeterminantColumns>
-          <Column IsWildCard="true" />
-        </DeterminantColumns>
-        <DependentColumn IsWildCard="true" />
-        <ThresholdSetting>Specified</ThresholdSetting>
-        <FDStrengthThreshold>0.95</FDStrengthThreshold>
-        <VerifyOutputInFastMode>false</VerifyOutputInFastMode>
-        <MaxNumberOfViolations>100</MaxNumberOfViolations>
-      </FunctionalDependencyProfileRequest>
-    </Requests>
+    <Requests />
   </DataProfileInput>
   <DataProfileOutput>
     <Profiles />
@@ -155,9 +136,9 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="172,42"
-          Id="Package\Data Profiling Task"
-          TopLeft="438,70" />
+          Size="177,42"
+          Id="Package\Data Profiling Task 1"
+          TopLeft="277,153" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
