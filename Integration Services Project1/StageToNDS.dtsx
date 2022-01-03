@@ -1,125 +1,35 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="11/14/2021 12:30:50 AM"
+  DTS:CreationDate="1/2/2022 8:32:53 PM"
   DTS:CreationName="Microsoft.Package"
-  DTS:CreatorComputerName="QUANG"
-  DTS:CreatorName="QUANG\PC"
-  DTS:DTSID="{1A7349F1-F1FD-4D17-A41C-5C25E77A01B7}"
+  DTS:CreatorComputerName="DESKTOP-AHIT5R8"
+  DTS:CreatorName="DESKTOP-AHIT5R8\khoa"
+  DTS:DTSID="{BA0F93E1-74A2-4A4E-92ED-B6D7329C11BE}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.170"
   DTS:LocaleID="1033"
-  DTS:MaxErrorCount="1000000"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{9EABD9A8-7246-4FB5-ABCF-D46A6FD0A411}">
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{306E419C-7572-4655-99C5-0FD07E88FD3F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[AccidentProfile]"
-      DTS:CreationName="FILE"
-      DTS:DTSID="{D8A8BE78-5962-415B-9E30-F1AEADEFA8A3}"
-      DTS:ObjectName="AccidentProfile">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:FileUsageType="1"
-          DTS:ConnectionString="D:\BI09 - HW#2\ETL_Project\AccidentProfile" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Accidents1114.csv]"
-      DTS:CreationName="FILE"
-      DTS:DTSID="{0FD882FD-351C-4F99-86DF-7D7483B80E19}"
-      DTS:ObjectName="Accidents1114.csv">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="D:\Users\PC\source\repos\Integration Services Project1\UK Accidents Data 2011-2014\Accidents1114.csv" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Accidents1114.csv 1]"
-      DTS:CreationName="FILE"
-      DTS:DTSID="{FA1F5A9B-73DB-45B4-AB40-876D3926625C}"
-      DTS:ObjectName="Accidents1114.csv 1">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="D:\Users\PC\source\repos\Integration Services Project1\UK Accidents Data 2011-2014\Accidents1114.csv" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Casualties1114.csv]"
-      DTS:CreationName="FILE"
-      DTS:DTSID="{A819E8E7-F745-4D39-848D-B5586F87871B}"
-      DTS:ObjectName="Casualties1114.csv">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="D:\Users\PC\source\repos\Integration Services Project1\UK Accidents Data 2011-2014\Casualties1114.csv" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[QUANG\MSSQLSERVER07.DATH_Stage]"
-      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
-      DTS:DTSID="{7DD3E0DA-A1FC-4FCD-B11B-8817A891A8A2}"
-      DTS:ObjectName="QUANG\MSSQLSERVER07.DATH_Stage">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=QUANG\MSSQLSERVER07;Initial Catalog=DATH_Stage;Integrated Security=True;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Vehicles1114.csv]"
-      DTS:CreationName="FILE"
-      DTS:DTSID="{DAF2BAB2-E1AE-4CA7-84D0-2A0C7FD5900B}"
-      DTS:ObjectName="Vehicles1114.csv">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="D:\Users\PC\source\repos\Integration Services Project1\UK Accidents Data 2011-2014\Vehicles1114.csv" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Vehicles1114.csv 1]"
-      DTS:CreationName="FILE"
-      DTS:DTSID="{5F5950E4-00BC-4D37-9D1C-F04C76A353A9}"
-      DTS:ObjectName="Vehicles1114.csv 1">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="D:\Users\PC\source\repos\Integration Services Project1\UK Accidents Data 2011-2014\Vehicles1114.csv" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Data Profiling Task 1"
-      DTS:CreationName="Microsoft.DataProfilingTask"
-      DTS:Description="Data Profiling Task"
-      DTS:DTSID="{503957E7-19EF-4BD3-884A-9E4E0C8B9684}"
-      DTS:ExecutableType="Microsoft.DataProfilingTask"
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A06E2776-0227-49BD-8F1B-CA0DE079C23D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Data Profiling Task 1"
-      DTS:TaskContact="Data Profiling Task; Microsoft Corporation; SQL Server 2019; (c) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
-        <DataProfilingTaskData
-          Destination="Accidents1114.csv"
-          OverwriteDestination="True">
-          <ProfileInput><![CDATA[<?xml version="1.0" encoding="utf-16"?>
-<DataProfile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/sqlserver/2008/DataDebugger/">
-  <ProfileVersion>1.0</ProfileVersion>
-  <DataSources />
-  <DataProfileInput>
-    <ProfileMode>Exact</ProfileMode>
-    <Timeout>0</Timeout>
-    <Requests />
-  </DataProfileInput>
-  <DataProfileOutput>
-    <Profiles />
-  </DataProfileOutput>
-</DataProfile>]]></ProfileInput>
-        </DataProfilingTaskData>
+        <pipeline
+          version="1" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -136,9 +46,9 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="177,42"
-          Id="Package\Data Profiling Task 1"
-          TopLeft="277,153" />
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="174.285717253782,115.470589854726" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
