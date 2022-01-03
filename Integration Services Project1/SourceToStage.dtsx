@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="53"
-  DTS:VersionGUID="{58198435-1AB4-4222-AA8A-4DB1AE1BCDAA}">
+  DTS:VersionBuild="54"
+  DTS:VersionGUID="{0B77371B-783A-478C-8BF7-A5BC9240DD36}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -4665,6 +4665,150 @@ where [refTable].[Accident_Index] = ?</property>
               </outputs>
             </component>
             <component
+              refId="Package\Casual_csv top Casual_Stage\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Casual_Stage]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Casual_Stage]) [refTable]
+where [refTable].[Accident_Index] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Accident_Index" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Vehicle_Reference" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Casualty_Reference" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Casualty_Class" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Sex_of_Casualty" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Age_of_Casualty" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Age_Band_of_Casualty" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Casualty_Severity" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Pedestrian_Location" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Pedestrian_Movement" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Car_Passenger" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Bus_or_Coach_Passenger" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Pedestrian_Road_Maintenance_Worker" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Casualty_Type" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Casualty_Home_Area_Type" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CreatedDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UpdatedDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Casual_csv top Casual_Stage\Casual source.Outputs[Flat File Source Output].Columns[Accident_Index]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Casual_csv top Casual_Stage\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.DATH_Stage]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DATH_Stage]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Casual_csv top Casual_Stage\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Casual_csv top Casual_Stage\Lookup.Inputs[Lookup Input].Columns[Accident_Index]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Accident_Index"
+                      lineageId="Package\Casual_csv top Casual_Stage\Casual source.Outputs[Flat File Source Output].Columns[Accident_Index]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Accident_Index</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Casual_csv top Casual_Stage\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Casual_csv top Casual_Stage\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Casual_csv top Casual_Stage\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Casual_csv top Casual_Stage\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Casual_csv top Casual_Stage\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Casual_csv top Casual_Stage\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Casual_csv top Casual_Stage\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Casual_csv top Casual_Stage\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Casual_csv top Casual_Stage\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Casual_csv top Casual_Stage\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Casual_csv top Casual_Stage\Them craeteddate UpdatedDate"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -4768,9 +4912,14 @@ where [refTable].[Accident_Index] = ?</property>
               startId="Package\Casual_csv top Casual_Stage\Them craeteddate UpdatedDate.Outputs[Derived Column Output]" />
             <path
               refId="Package\Casual_csv top Casual_Stage.Paths[Flat File Source Output]"
-              endId="Package\Casual_csv top Casual_Stage\Them craeteddate UpdatedDate.Inputs[Derived Column Input]"
+              endId="Package\Casual_csv top Casual_Stage\Lookup.Inputs[Lookup Input]"
               name="Flat File Source Output"
               startId="Package\Casual_csv top Casual_Stage\Casual source.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Casual_csv top Casual_Stage.Paths[Lookup No Match Output]"
+              endId="Package\Casual_csv top Casual_Stage\Them craeteddate UpdatedDate.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Casual_csv top Casual_Stage\Lookup.Outputs[Lookup No Match Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -5265,6 +5414,82 @@ where [refTable].[Accident_Index] = ?</property>
                       refId="Package\UK Codebook\CasulityType.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\UK Codebook\CasulityType.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\UK Codebook\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\UK Codebook\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\UK Codebook\Data Conversion.Inputs[Data Conversion Input].Columns[code]"
+                      cachedDataType="r8"
+                      cachedName="code"
+                      lineageId="Package\UK Codebook\Severity.Outputs[Excel Source Output].Columns[code]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\UK Codebook\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\UK Codebook\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UK Codebook\Data Conversion.Outputs[Data Conversion Output].Columns[code_conversation]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\UK Codebook\Data Conversion.Outputs[Data Conversion Output].Columns[code_conversation]"
+                      name="code_conversation"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\UK Codebook\Severity.Outputs[Excel Source Output].Columns[code]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UK Codebook\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\UK Codebook\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UK Codebook\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UK Codebook\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UK Codebook\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UK Codebook\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -7082,7 +7307,7 @@ where [refTable].[Accident_Index] = ?</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[Severy_code]</property>
+                  name="OpenRowset">[Severity_Stage]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -7139,12 +7364,6 @@ where [refTable].[Accident_Index] = ?</property>
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\UK Codebook\Load to DB Severy.Inputs[OLE DB Destination Input].Columns[code]"
-                      cachedDataType="r8"
-                      cachedName="code"
-                      externalMetadataColumnId="Package\UK Codebook\Load to DB Severy.Inputs[OLE DB Destination Input].ExternalColumns[code]"
-                      lineageId="Package\UK Codebook\Severity.Outputs[Excel Source Output].Columns[code]" />
-                    <inputColumn
                       refId="Package\UK Codebook\Load to DB Severy.Inputs[OLE DB Destination Input].Columns[label]"
                       cachedDataType="wstr"
                       cachedLength="255"
@@ -7163,12 +7382,20 @@ where [refTable].[Accident_Index] = ?</property>
                       cachedName="UpdatedDate"
                       externalMetadataColumnId="Package\UK Codebook\Load to DB Severy.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
                       lineageId="Package\UK Codebook\Derived Column.Outputs[Derived Column Output].Columns[UpdatedDate]" />
+                    <inputColumn
+                      refId="Package\UK Codebook\Load to DB Severy.Inputs[OLE DB Destination Input].Columns[code_conversation]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="code_conversation"
+                      externalMetadataColumnId="Package\UK Codebook\Load to DB Severy.Inputs[OLE DB Destination Input].ExternalColumns[code]"
+                      lineageId="Package\UK Codebook\Data Conversion.Outputs[Data Conversion Output].Columns[code_conversation]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\UK Codebook\Load to DB Severy.Inputs[OLE DB Destination Input].ExternalColumns[code]"
-                      dataType="r8"
+                      dataType="wstr"
+                      length="50"
                       name="code" />
                     <externalMetadataColumn
                       refId="Package\UK Codebook\Load to DB Severy.Inputs[OLE DB Destination Input].ExternalColumns[label]"
@@ -7183,6 +7410,12 @@ where [refTable].[Accident_Index] = ?</property>
                       refId="Package\UK Codebook\Load to DB Severy.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
                       dataType="dbTimeStamp"
                       name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\UK Codebook\Load to DB Severy.Inputs[OLE DB Destination Input].ExternalColumns[Copy of code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Copy of code" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -7911,6 +8144,149 @@ where [refTable].[Accident_Index] = ?</property>
               </outputs>
             </component>
             <component
+              refId="Package\UK Codebook\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Severity_Stage]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Severity_Stage]) [refTable]
+where [refTable].[code] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="code" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="label" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Copy of code" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CreatedDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UpdatedDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\UK Codebook\Data Conversion.Outputs[Data Conversion Output].Columns[code_conversation]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UK Codebook\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.DATH_Stage]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DATH_Stage]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\UK Codebook\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\UK Codebook\Lookup.Inputs[Lookup Input].Columns[code_conversation]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="code_conversation"
+                      lineageId="Package\UK Codebook\Data Conversion.Outputs[Data Conversion Output].Columns[code_conversation]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">code</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\UK Codebook\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\UK Codebook\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UK Codebook\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\UK Codebook\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UK Codebook\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\UK Codebook\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UK Codebook\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UK Codebook\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UK Codebook\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UK Codebook\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\UK Codebook\Road Type"
               componentClassID="Microsoft.ExcelSource"
               contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
@@ -8508,10 +8884,15 @@ where [refTable].[Accident_Index] = ?</property>
           </components>
           <paths>
             <path
-              refId="Package\UK Codebook.Paths[Derived Column Output]"
-              endId="Package\UK Codebook\Load to DB Sex_Casulity.Inputs[OLE DB Destination Input]"
+              refId="Package\UK Codebook.Paths[Data Conversion Output]"
+              endId="Package\UK Codebook\Lookup.Inputs[Lookup Input]"
+              name="Data Conversion Output"
+              startId="Package\UK Codebook\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\UK Codebook.Paths[Derived Column Output9]"
+              endId="Package\UK Codebook\Load to DB VehicleType.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
-              startId="Package\UK Codebook\Derived Column 1 1 1 1 1.Outputs[Derived Column Output]" />
+              startId="Package\UK Codebook\Derived Column 2 1 1 1.Outputs[Derived Column Output]" />
             <path
               refId="Package\UK Codebook.Paths[Derived Column Output8]"
               endId="Package\UK Codebook\Load to DB Severy.Inputs[OLE DB Destination Input]"
@@ -8528,15 +8909,15 @@ where [refTable].[Accident_Index] = ?</property>
               name="Derived Column Output"
               startId="Package\UK Codebook\Derived Column 1 1 1 1.Outputs[Derived Column Output]" />
             <path
-              refId="Package\UK Codebook.Paths[Derived Column Output5]"
-              endId="Package\UK Codebook\Load to DB AgeBAnd.Inputs[OLE DB Destination Input]"
+              refId="Package\UK Codebook.Paths[Derived Column Output]"
+              endId="Package\UK Codebook\Load to DB Sex_Casulity.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
-              startId="Package\UK Codebook\Derived Column 2 1.Outputs[Derived Column Output]" />
+              startId="Package\UK Codebook\Derived Column 1 1 1 1 1.Outputs[Derived Column Output]" />
             <path
-              refId="Package\UK Codebook.Paths[Derived Column Output9]"
-              endId="Package\UK Codebook\Load to DB VehicleType.Inputs[OLE DB Destination Input]"
+              refId="Package\UK Codebook.Paths[Derived Column Output4]"
+              endId="Package\UK Codebook\Load to DB Casulity Type.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
-              startId="Package\UK Codebook\Derived Column 2 1 1 1.Outputs[Derived Column Output]" />
+              startId="Package\UK Codebook\Derived Column 2.Outputs[Derived Column Output]" />
             <path
               refId="Package\UK Codebook.Paths[Derived Column Output3]"
               endId="Package\UK Codebook\Load to DB RoadType.Inputs[OLE DB Destination Input]"
@@ -8553,20 +8934,15 @@ where [refTable].[Accident_Index] = ?</property>
               name="Derived Column Output"
               startId="Package\UK Codebook\Derived Column 1 1.Outputs[Derived Column Output]" />
             <path
-              refId="Package\UK Codebook.Paths[Derived Column Output4]"
-              endId="Package\UK Codebook\Load to DB Casulity Type.Inputs[OLE DB Destination Input]"
+              refId="Package\UK Codebook.Paths[Derived Column Output5]"
+              endId="Package\UK Codebook\Load to DB AgeBAnd.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
-              startId="Package\UK Codebook\Derived Column 2.Outputs[Derived Column Output]" />
+              startId="Package\UK Codebook\Derived Column 2 1.Outputs[Derived Column Output]" />
             <path
-              refId="Package\UK Codebook.Paths[Excel Source Output8]"
-              endId="Package\UK Codebook\Derived Column 1 1 1 1 1.Inputs[Derived Column Input]"
+              refId="Package\UK Codebook.Paths[Excel Source Output9]"
+              endId="Package\UK Codebook\Data Conversion.Inputs[Data Conversion Input]"
               name="Excel Source Output"
-              startId="Package\UK Codebook\Sex Casulity.Outputs[Excel Source Output]" />
-            <path
-              refId="Package\UK Codebook.Paths[Excel Source Output]"
-              endId="Package\UK Codebook\Derived Column 2 1.Inputs[Derived Column Input]"
-              name="Excel Source Output"
-              startId="Package\UK Codebook\AgeBand.Outputs[Excel Source Output]" />
+              startId="Package\UK Codebook\Severity.Outputs[Excel Source Output]" />
             <path
               refId="Package\UK Codebook.Paths[Excel Source Output1]"
               endId="Package\UK Codebook\Derived Column 1 1.Inputs[Derived Column Input]"
@@ -8594,19 +8970,29 @@ where [refTable].[Accident_Index] = ?</property>
               startId="Package\UK Codebook\VehicleType.Outputs[Excel Source Output]" />
             <path
               refId="Package\UK Codebook.Paths[Excel Source Output6]"
-              endId="Package\UK Codebook\Derived Column.Inputs[Derived Column Input]"
-              name="Excel Source Output"
-              startId="Package\UK Codebook\Severity.Outputs[Excel Source Output]" />
-            <path
-              refId="Package\UK Codebook.Paths[Excel Source Output7]"
               endId="Package\UK Codebook\Derived Column 2.Inputs[Derived Column Input]"
               name="Excel Source Output"
               startId="Package\UK Codebook\CasulityType.Outputs[Excel Source Output]" />
             <path
-              refId="Package\UK Codebook.Paths[Excel Source Output9]"
+              refId="Package\UK Codebook.Paths[Excel Source Output7]"
+              endId="Package\UK Codebook\Derived Column 1 1 1 1 1.Inputs[Derived Column Input]"
+              name="Excel Source Output"
+              startId="Package\UK Codebook\Sex Casulity.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\UK Codebook.Paths[Excel Source Output8]"
               endId="Package\UK Codebook\Derived Column 1 1 1.Inputs[Derived Column Input]"
               name="Excel Source Output"
               startId="Package\UK Codebook\Road Type.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\UK Codebook.Paths[Excel Source Output]"
+              endId="Package\UK Codebook\Derived Column 2 1.Inputs[Derived Column Input]"
+              name="Excel Source Output"
+              startId="Package\UK Codebook\AgeBand.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\UK Codebook.Paths[Lookup No Match Output]"
+              endId="Package\UK Codebook\Derived Column.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\UK Codebook\Lookup.Outputs[Lookup No Match Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -8676,6 +9062,150 @@ where [refTable].[Accident_Index] = ?</property>
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Vehicle_csv to Vehicle Stage\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Casual_Stage]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Casual_Stage]) [refTable]
+where [refTable].[Accident_Index] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Accident_Index" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Vehicle_Reference" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Casualty_Reference" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Casualty_Class" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Sex_of_Casualty" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Age_of_Casualty" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Age_Band_of_Casualty" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Casualty_Severity" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Pedestrian_Location" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Pedestrian_Movement" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Car_Passenger" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Bus_or_Coach_Passenger" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Pedestrian_Road_Maintenance_Worker" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Casualty_Type" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Casualty_Home_Area_Type" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CreatedDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UpdatedDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Vehicle_csv to Vehicle Stage\Vehicle_csv.Outputs[Flat File Source Output].Columns[Accident_Index]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Vehicle_csv to Vehicle Stage\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.DATH_Stage]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DATH_Stage]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Vehicle_csv to Vehicle Stage\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Vehicle_csv to Vehicle Stage\Lookup.Inputs[Lookup Input].Columns[Accident_Index]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Accident_Index"
+                      lineageId="Package\Vehicle_csv to Vehicle Stage\Vehicle_csv.Outputs[Flat File Source Output].Columns[Accident_Index]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Accident_Index</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Vehicle_csv to Vehicle Stage\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Vehicle_csv to Vehicle Stage\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Vehicle_csv to Vehicle Stage\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Vehicle_csv to Vehicle Stage\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Vehicle_csv to Vehicle Stage\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Vehicle_csv to Vehicle Stage\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Vehicle_csv to Vehicle Stage\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Vehicle_csv to Vehicle Stage\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Vehicle_csv to Vehicle Stage\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Vehicle_csv to Vehicle Stage\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Vehicle_csv to Vehicle Stage\Them created date, updated date"
               componentClassID="Microsoft.DerivedColumn"
@@ -9892,9 +10422,14 @@ where [refTable].[Accident_Index] = ?</property>
               startId="Package\Vehicle_csv to Vehicle Stage\Them created date, updated date.Outputs[Derived Column Output]" />
             <path
               refId="Package\Vehicle_csv to Vehicle Stage.Paths[Flat File Source Output]"
-              endId="Package\Vehicle_csv to Vehicle Stage\Them created date, updated date.Inputs[Derived Column Input]"
+              endId="Package\Vehicle_csv to Vehicle Stage\Lookup.Inputs[Lookup Input]"
               name="Flat File Source Output"
               startId="Package\Vehicle_csv to Vehicle Stage\Vehicle_csv.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Vehicle_csv to Vehicle Stage.Paths[Lookup No Match Output]"
+              endId="Package\Vehicle_csv to Vehicle Stage\Them created date, updated date.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Vehicle_csv to Vehicle Stage\Lookup.Outputs[Lookup No Match Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -10390,60 +10925,84 @@ where [refTable].[Accident_Index] = ?</property>
         <NodeLayout
           Size="228.8,41.6"
           Id="Package\Casual_csv top Casual_Stage\Them craeteddate UpdatedDate"
-          TopLeft="416.999999318804,163" />
+          TopLeft="420.999999318804,288" />
         <NodeLayout
           Size="143.2,41.6"
           Id="Package\Casual_csv top Casual_Stage\Casual source"
-          TopLeft="463,33" />
+          TopLeft="463,63" />
         <NodeLayout
           Size="141.6,41.6"
           Id="Package\Casual_csv top Casual_Stage\Casual_Stage"
-          TopLeft="458.14285717935,267.647058930777" />
+          TopLeft="466.14285717935,407.647058930777" />
         <EdgeLayout
-          Id="Package\Casual_csv top Casual_Stage.Paths[Flat File Source Output]"
-          TopLeft="532.999999659402,74.6">
+          Id="Package\Casual_csv top Casual_Stage.Paths[Derived Column Output]"
+          TopLeft="536.171428249077,329.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,88.4"
+              EndConnector="0,78.047058930777"
               Start="0,0"
-              End="0,80.9">
+              End="0,70.547058930777">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,80.9" />
+                    End="0,70.547058930777" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="112.8,41.6"
+          Id="Package\Casual_csv top Casual_Stage\Lookup"
+          TopLeft="477,189" />
+        <EdgeLayout
+          Id="Package\Casual_csv top Casual_Stage.Paths[Flat File Source Output]"
+          TopLeft="534,104.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,84.4"
+              Start="0,0"
+              End="0,76.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Casual_csv top Casual_Stage.Paths[Derived Column Output]"
-          TopLeft="530.171428249077,204.6">
+          Id="Package\Casual_csv top Casual_Stage.Paths[Lookup No Match Output]"
+          TopLeft="534.399999659402,230.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,63.0470589307766"
+              EndConnector="0,57.4"
               Start="0,0"
-              End="0,55.5470589307766">
+              End="0,49.9">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,55.5470589307766" />
+                    End="0,49.9" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-55.80638671875,19.1453125,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -10471,126 +11030,126 @@ where [refTable].[Accident_Index] = ?</property>
         <NodeLayout
           Size="163.2,41.6"
           Id="Package\UK Codebook\Derived Column 1 1"
-          TopLeft="472,103" />
+          TopLeft="472,134" />
         <NodeLayout
           Size="193.6,41.6"
           Id="Package\UK Codebook\Load to DB Sex_Casulity"
-          TopLeft="1092.9999993188,192.294117679233" />
+          TopLeft="1092.9999993188,223.294117679233" />
         <NodeLayout
           Size="163.2,41.6"
           Id="Package\UK Codebook\Urbar or NoUrban"
-          TopLeft="470,27" />
+          TopLeft="470,58" />
         <NodeLayout
           Size="153.6,41.6"
           Id="Package\UK Codebook\Derived Column 2 1 1 1"
-          TopLeft="715.857141969155,365.294117679233" />
+          TopLeft="715.857141969155,396.294117679233" />
         <NodeLayout
           Size="163.2,41.6"
           Id="Package\UK Codebook\Derived Column 1"
-          TopLeft="271,96" />
+          TopLeft="271,127" />
         <NodeLayout
           Size="196.8,41.6"
           Id="Package\UK Codebook\Load to DB Casulity Type"
-          TopLeft="25.8571429057997,467.117646415341" />
+          TopLeft="23.8571429057997,561.117646415341" />
         <NodeLayout
           Size="169.6,41.6"
           Id="Package\UK Codebook\Load to UrbanRoral"
-          TopLeft="469.428571112302,195.705882503087" />
+          TopLeft="469.428571112302,226.705882503087" />
         <NodeLayout
           Size="153.6,41.6"
           Id="Package\UK Codebook\Derived Column 2 1 1"
-          TopLeft="491,362" />
+          TopLeft="491,393" />
         <NodeLayout
           Size="136,41.6"
           Id="Package\UK Codebook\Sex Casulity"
-          TopLeft="1116,29" />
+          TopLeft="1116,60" />
         <NodeLayout
-          Size="153.6,41.6"
+          Size="152.8,41.6"
           Id="Package\UK Codebook\Derived Column"
-          TopLeft="46,104" />
+          TopLeft="29,237" />
         <NodeLayout
           Size="166.4,41.6"
           Id="Package\UK Codebook\Load to DB Severy"
-          TopLeft="45,195" />
+          TopLeft="23,332" />
         <NodeLayout
           Size="153.6,41.6"
           Id="Package\UK Codebook\Derived Column 2 1"
-          TopLeft="274.85714282065,362.05882284303" />
+          TopLeft="274.85714282065,393.05882284303" />
         <NodeLayout
           Size="212,41.6"
           Id="Package\UK Codebook\Load to DB Casulity Severity"
-          TopLeft="847.142856327855,196.823529465388" />
+          TopLeft="847.142856327855,227.823529465388" />
         <NodeLayout
           Size="153.6,41.6"
           Id="Package\UK Codebook\Derived Column 2"
-          TopLeft="47.8571429057997,366.117646415341" />
+          TopLeft="39.8571429057997,470.117646415341" />
         <NodeLayout
           Size="116.8,41.6"
           Id="Package\UK Codebook\Severity"
-          TopLeft="71,27" />
+          TopLeft="44,5.99999999999998" />
         <NodeLayout
           Size="139.2,41.6"
           Id="Package\UK Codebook\CasulityType"
-          TopLeft="59,281" />
+          TopLeft="45,393" />
         <NodeLayout
           Size="212,41.6"
           Id="Package\UK Codebook\Load to DB Journey Purpose"
-          TopLeft="468.571427951054,460.882352490739" />
+          TopLeft="468.571427951054,491.882352490739" />
         <NodeLayout
           Size="180.8,41.6"
           Id="Package\UK Codebook\Load to DB RoadType"
-          TopLeft="653.428570942003,193.352941251544" />
+          TopLeft="653.428570942003,224.352941251544" />
         <NodeLayout
           Size="200,41.6"
           Id="Package\UK Codebook\Derived Column 1 1 1 1 1"
-          TopLeft="1082,95" />
+          TopLeft="1082,126" />
         <NodeLayout
           Size="211.2,41.6"
           Id="Package\UK Codebook\Load to Local Author district"
-          TopLeft="241.571428206502,195.058823572311" />
+          TopLeft="241.571428206502,226.058823572311" />
         <NodeLayout
           Size="128.8,41.6"
           Id="Package\UK Codebook\Road Type"
-          TopLeft="678.857142990949,24.1764705346118" />
+          TopLeft="678.857142990949,55.1764705346118" />
         <NodeLayout
           Size="156,41.6"
           Id="Package\UK Codebook\Casulity Severity"
-          TopLeft="879.285714018102,29.4705882138447" />
+          TopLeft="879.285714018102,60.4705882138447" />
         <NodeLayout
           Size="176.8,41.6"
           Id="Package\UK Codebook\Load to DB AgeBAnd"
-          TopLeft="265.85714282065,455.05882284303" />
+          TopLeft="265.85714282065,486.05882284303" />
         <NodeLayout
           Size="163.2,41.6"
           Id="Package\UK Codebook\Derived Column 1 1 1 1"
-          TopLeft="873.285713847802,113.117647144621" />
+          TopLeft="873.285713847802,144.117647144621" />
         <NodeLayout
           Size="191.2,41.6"
           Id="Package\UK Codebook\Load to DB VehicleType"
-          TopLeft="693.428570431106,455.764705346117" />
+          TopLeft="693.428570431106,486.764705346117" />
         <NodeLayout
           Size="134.4,41.6"
           Id="Package\UK Codebook\VehicleType"
-          TopLeft="721.857141969155,278.294117679233" />
+          TopLeft="721.857141969155,309.294117679233" />
         <NodeLayout
           Size="163.2,41.6"
           Id="Package\UK Codebook\Derived Column 1 1 1"
-          TopLeft="659.999999744551,102.058823572311" />
+          TopLeft="659.999999744551,133.058823572311" />
         <NodeLayout
           Size="172,41.6"
           Id="Package\UK Codebook\Local author district"
-          TopLeft="265,27.2352941069224" />
+          TopLeft="265,58.2352941069224" />
         <NodeLayout
           Size="120.8,48.8"
           Id="Package\UK Codebook\AgeBand"
-          TopLeft="291.571428461951,267.235293924602" />
+          TopLeft="291.571428461951,298.235293924602" />
         <NodeLayout
           Size="156.8,42.4"
           Id="Package\UK Codebook\Journey Purpose"
-          TopLeft="486,272.235294106922" />
+          TopLeft="486,303.235294106922" />
         <EdgeLayout
-          Id="Package\UK Codebook.Paths[Excel Source Output9]"
-          TopLeft="742.42857136775,65.7764705346118">
+          Id="Package\UK Codebook.Paths[Excel Source Output8]"
+          TopLeft="742.42857136775,96.7764705346118">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10607,14 +11166,12 @@ where [refTable].[Accident_Index] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\UK Codebook.Paths[Excel Source Output8]"
-          TopLeft="1183,71">
+          Id="Package\UK Codebook.Paths[Excel Source Output7]"
+          TopLeft="1183,102">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10631,62 +11188,34 @@ where [refTable].[Accident_Index] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\UK Codebook.Paths[Excel Source Output7]"
-          TopLeft="126.6285714529,322.6">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43.5176464153408"
-              Start="0,0"
-              End="0,36.0176464153408">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.0176464153408" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\UK Codebook.Paths[Excel Source Output6]"
-          TopLeft="126.25,69">
+          TopLeft="115.6285714529,434.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,35"
+              EndConnector="0,35.517646415341"
               Start="0,0"
-              End="0,27.5">
+              End="0,28.017646415341">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.5" />
+                    End="0,28.017646415341" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\UK Codebook.Paths[Excel Source Output5]"
-          TopLeft="790.857141969155,319.894117679233">
+          TopLeft="790.857141969155,350.894117679233">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10703,14 +11232,12 @@ where [refTable].[Accident_Index] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\UK Codebook.Paths[Excel Source Output4]"
-          TopLeft="956.085713932952,71.0705882138447">
+          TopLeft="956.085713932952,102.070588213845">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10727,14 +11254,12 @@ where [refTable].[Accident_Index] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\UK Codebook.Paths[Excel Source Output3]"
-          TopLeft="566.1,314.635294106922">
+          TopLeft="566.1,345.635294106922">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10751,14 +11276,12 @@ where [refTable].[Accident_Index] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\UK Codebook.Paths[Excel Source Output2]"
-          TopLeft="351.8,68.8352941069223">
+          TopLeft="351.8,99.8352941069223">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10775,14 +11298,12 @@ where [refTable].[Accident_Index] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\UK Codebook.Paths[Excel Source Output1]"
-          TopLeft="552.5,69">
+          TopLeft="552.5,100">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10799,14 +11320,12 @@ where [refTable].[Accident_Index] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\UK Codebook.Paths[Excel Source Output]"
-          TopLeft="351.8142856413,316.035293924602">
+          TopLeft="351.8142856413,347.035293924602">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10823,14 +11342,12 @@ where [refTable].[Accident_Index] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\UK Codebook.Paths[Derived Column Output9]"
-          TopLeft="790.84285620013,406.894117679233">
+          TopLeft="790.84285620013,437.894117679233">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10847,38 +11364,34 @@ where [refTable].[Accident_Index] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\UK Codebook.Paths[Derived Column Output8]"
-          TopLeft="125.5,145.6">
+          TopLeft="105.8,278.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,49.4"
+              EndConnector="0,53.4000000000001"
               Start="0,0"
-              End="0,41.9">
+              End="0,45.9000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41.9" />
+                    End="0,45.9000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\UK Codebook.Paths[Derived Column Output7]"
-          TopLeft="349.885714103251,137.6">
+          TopLeft="349.885714103251,168.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10895,14 +11408,12 @@ where [refTable].[Accident_Index] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\UK Codebook.Paths[Derived Column Output6]"
-          TopLeft="954.014285087829,154.717647144621">
+          TopLeft="954.014285087829,185.717647144621">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10919,14 +11430,12 @@ where [refTable].[Accident_Index] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\UK Codebook.Paths[Derived Column Output5]"
-          TopLeft="352.95714282065,403.65882284303">
+          TopLeft="352.95714282065,434.65882284303">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10943,38 +11452,34 @@ where [refTable].[Accident_Index] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\UK Codebook.Paths[Derived Column Output4]"
-          TopLeft="124.4571429058,407.717646415341">
+          TopLeft="119.4571429058,511.717646415341">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,59.4"
+              EndConnector="0,49.4"
               Start="0,0"
-              End="0,51.9">
+              End="0,41.9">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,51.9" />
+                    End="0,41.9" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\UK Codebook.Paths[Derived Column Output3]"
-          TopLeft="742.714285343277,143.658823572311">
+          TopLeft="742.714285343277,174.658823572311">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10991,14 +11496,12 @@ where [refTable].[Accident_Index] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\UK Codebook.Paths[Derived Column Output2]"
-          TopLeft="571.185713975527,403.6">
+          TopLeft="571.185713975527,434.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11015,14 +11518,12 @@ where [refTable].[Accident_Index] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\UK Codebook.Paths[Derived Column Output1]"
-          TopLeft="553.914285556151,144.6">
+          TopLeft="553.914285556151,175.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11039,14 +11540,12 @@ where [refTable].[Accident_Index] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\UK Codebook.Paths[Derived Column Output]"
-          TopLeft="1185.8999996594,136.6">
+          TopLeft="1185.8999996594,167.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11063,9 +11562,83 @@ where [refTable].[Accident_Index] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="112.8,41.6"
+          Id="Package\UK Codebook\Lookup"
+          TopLeft="41.4,160.6" />
+        <EdgeLayout
+          Id="Package\UK Codebook.Paths[Lookup No Match Output]"
+          TopLeft="101.6,202.2">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.7999999999998"
+              Start="0,0"
+              End="0,27.2999999999998">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.2999999999998" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-55.80638671875,7.84531249999991,111.6127734375,11.609375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\UK Codebook\Data Conversion"
+          TopLeft="24,80.4" />
+        <EdgeLayout
+          Id="Package\UK Codebook.Paths[Excel Source Output9]"
+          TopLeft="102,47.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.8"
+              Start="0,0"
+              End="0,25.3">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.3" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\UK Codebook.Paths[Data Conversion Output]"
+          TopLeft="99.7,122">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.6000000000001"
+              Start="0,0"
+              End="0,31.1000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.1000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11326,60 +11899,120 @@ where [refTable].[Accident_Index] = ?</property>
         <NodeLayout
           Size="144,41.6"
           Id="Package\Vehicle_csv to Vehicle Stage\Vehicle_Stage"
-          TopLeft="563,306" />
+          TopLeft="369,410" />
         <NodeLayout
           Size="236.8,41.6"
           Id="Package\Vehicle_csv to Vehicle Stage\Them created date, updated date"
-          TopLeft="509,176" />
+          TopLeft="341,282" />
         <NodeLayout
           Size="132.8,41.6"
           Id="Package\Vehicle_csv to Vehicle Stage\Vehicle_csv"
-          TopLeft="559,77" />
+          TopLeft="385,71" />
         <EdgeLayout
-          Id="Package\Vehicle_csv to Vehicle Stage.Paths[Flat File Source Output]"
-          TopLeft="626.4,118.6">
+          Id="Package\Vehicle_csv to Vehicle Stage.Paths[Derived Column Output]"
+          TopLeft="459.4,323.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,57.4"
+              EndConnector="-18.4,86.4"
               Start="0,0"
-              End="0,49.9">
+              End="-18.4,78.9">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,49.9" />
+                    End="0,39.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.2"
+                    Point2="0,43.2"
+                    Point3="-4,43.2" />
+                  <mssgle:LineSegment
+                    End="-14.4,43.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-14.4,43.2"
+                    Point2="-18.4,43.2"
+                    Point3="-18.4,47.2" />
+                  <mssgle:LineSegment
+                    End="-18.4,78.9" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="112.8,41.6"
+          Id="Package\Vehicle_csv to Vehicle Stage\Lookup"
+          TopLeft="380,176" />
+        <EdgeLayout
+          Id="Package\Vehicle_csv to Vehicle Stage.Paths[Flat File Source Output]"
+          TopLeft="451.4,112.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14.9999999999999,63.4"
+              Start="0,0"
+              End="-14.9999999999999,55.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.7" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.7"
+                    Point2="0,31.7"
+                    Point3="-4,31.7" />
+                  <mssgle:LineSegment
+                    End="-10.9999999999999,31.7" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.9999999999999,31.7"
+                    Point2="-14.9999999999999,31.7"
+                    Point3="-14.9999999999999,35.7" />
+                  <mssgle:LineSegment
+                    End="-14.9999999999999,55.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Vehicle_csv to Vehicle Stage.Paths[Derived Column Output]"
-          TopLeft="631.2,217.6">
+          Id="Package\Vehicle_csv to Vehicle Stage.Paths[Lookup No Match Output]"
+          TopLeft="436.4,217.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,88.4000000000002"
+              EndConnector="22.9999999999999,64.4000000000001"
               Start="0,0"
-              End="0,80.9000000000002">
+              End="22.9999999999999,56.9000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,80.9000000000002" />
+                    End="0,28.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.2"
+                    Point2="0,32.2"
+                    Point3="4,32.2" />
+                  <mssgle:LineSegment
+                    End="18.9999999999999,32.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="18.9999999999999,32.2"
+                    Point2="22.9999999999999,32.2"
+                    Point3="22.9999999999999,36.2" />
+                  <mssgle:LineSegment
+                    End="22.9999999999999,56.9000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-44.3063867187501,37.2,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -11411,6 +12044,75 @@ where [refTable].[Accident_Index] = ?</property>
         <Name>UsedTableName</Name>
         <Value
           type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Vehicle_csv to Vehicle Stage\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Casual_Stage]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Casual_csv top Casual_Stage\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Casual_Stage]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\UK Codebook\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Severity_Stage]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
